@@ -4,15 +4,15 @@ package com.modernappliances.appliances;
 
 public abstract class Appliance {
     // properties for all appliances
-    private String itemNumber;
-    private String brand;
-    private int quantity;
-    private int wattage;
-    private String color;
-    private double price;
+    protected String itemNumber;
+    protected String brand;
+    protected int quantity;
+    protected int wattage;
+    protected String color;
+    protected double price;
 
     // constructor
-    private Appliance(String itemNumber, String brand, int quantity, int wattage, String color, double price) {
+    public Appliance(String itemNumber, String brand, int quantity, int wattage, String color, double price) {
         this.itemNumber = itemNumber;
         this.brand = brand;
         this.quantity = quantity;
