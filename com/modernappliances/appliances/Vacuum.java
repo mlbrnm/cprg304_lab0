@@ -1,6 +1,7 @@
 package com.modernappliances.appliances;
 
 public class Vacuum extends Appliance {
+
     // vacuum-specific properties
     private String grade;
     private int batteryVoltage;
@@ -10,12 +11,23 @@ public class Vacuum extends Appliance {
         super(itemNumber, brand, quantity, wattage, color, price);
         this.grade = grade;
         this.batteryVoltage = batteryVoltage;
+
+        // validate battery voltage
+        if (!(batteryVoltage == 18 || batteryVoltage == 24)) {
+            throw new IllegalArgumentException("Invalid battery voltage. Must be either 18V or 24V.");
+        }
     }
 
     // getters
     public String getGrade() {
         return grade;
     }
+
+    public int getBatteryVoltage() {
+        return batteryVoltage;
+    }
+
+    // Display friendly battery voltage
     public String getVoltageDisplay() {
         return batteryVoltage + " V (" + (batteryVoltage == 18 ? "Low" : "High") + ")";
     }
