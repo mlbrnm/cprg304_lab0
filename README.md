@@ -1,6 +1,6 @@
 # Lab 0: Introduction to Java (Modern Appliances)
 
-## CPRG304 - Kamini Sehmi
+CPRG304 - Kamini Sehmi
 
 ## Contributors
 
