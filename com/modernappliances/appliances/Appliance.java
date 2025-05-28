@@ -73,7 +73,7 @@ public abstract class Appliance {
                 "Quantity: " + quantity + "\n" +
                 "Wattage: " + wattage + "W\n" +
                 "Color: " + color + "\n" +
-                "Price: " + price;
+                "Price: " + price + "\n";
     }
 
     // string representation of the appliance for saving to file

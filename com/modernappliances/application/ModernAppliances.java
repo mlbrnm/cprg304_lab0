@@ -1,3 +1,11 @@
+// Lab 0: Introduction to Java (Modern Appliances)
+// Created by:
+//    Aryan Bhanot
+//    Melbourne Marsden
+//    Amrit Reddy
+//    Harsimar Singh
+//    Jasmeet Singh
+
 package com.modernappliances.application;
 
 import com.modernappliances.appliances.*;
@@ -16,6 +24,10 @@ class ModernAppliances {
         scanner.close();
     }
 
+    /**
+     * Loads appliances from the specified file.
+     * If the file does not exist, it initializes an empty list.
+     */
     private static void loadAppliances() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
@@ -30,6 +42,11 @@ class ModernAppliances {
         }
     }
 
+
+    /**
+     * Parses a line from the file and creates an Appliance object.
+     * Returns null if the line is invalid or does not match any appliance type.
+     */
     private static Appliance parseAppliance(String line) {
         String[] parts = line.split(";");
         if (parts.length < 7)
@@ -76,6 +93,11 @@ class ModernAppliances {
         return null;
     }
 
+    /**
+     * Displays the main menu and handles user input.
+     * Provides options to check out appliances, find by brand, display by type,
+     * produce a random list, or save and exit.
+     */
     private static void displayMainMenu() {
         while (true) {
             System.out.println("\nWelcome to Modern Appliances!");
@@ -114,6 +136,11 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Checks out an appliance by item number.
+     * If the appliance is in stock, it decrements the quantity and confirms checkout.
+     * If not found or out of stock, it informs the user.
+     */
     private static void checkoutAppliance() {
         System.out.print("\nEnter the item number of an appliance: ");
         String itemNumber = scanner.nextLine();
@@ -127,7 +154,6 @@ class ModernAppliances {
             if (found.isInStock()) {
                 found.decrementQuantity();
                 System.out.println("\nAppliance \"" + itemNumber + "\" has been checked out.");
-                System.out.println(found);
             } else {
                 System.out.println("\nThe appliance is not available to be checked out.");
             }
@@ -136,6 +162,10 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Finds appliances by brand and displays them.
+     * If no appliances match the brand, it informs the user.
+     */
     private static void findAppliancesByBrand() {
         System.out.print("\nEnter brand to search for: ");
         String brand = scanner.nextLine();
@@ -152,6 +182,10 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Displays appliances by type and allows filtering based on specific criteria.
+     * The user can choose from refrigerators, vacuums, microwaves, or dishwashers.
+     */
     private static void displayAppliancesByType() {
         System.out.println("\nAppliance Types");
         System.out.println("1 - Refrigerators");
@@ -183,6 +217,10 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Filters refrigerators based on the number of doors.
+     * Prompts the user for input and displays matching refrigerators.
+     */
     private static void filterRefrigerators() {
         System.out.print("\nEnter number of doors: 2 (double door), 3 (three doors) or 4 (four doors): ");
         try {
@@ -203,6 +241,10 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Filters vacuums based on battery voltage.
+     * Prompts the user for input and displays matching vacuums.
+     */
     private static void filterVacuums() {
         System.out.print("\nEnter battery voltage value. 18 V (low) or 24 V (high): ");
         try {
@@ -223,6 +265,10 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Filters microwaves based on the room type.
+     * Prompts the user for input and displays matching microwaves.
+     */
     private static void filterMicrowaves() {
         System.out.print("\nRoom where the microwave will be installed: K (kitchen) or W (work site): ");
         String roomType = scanner.nextLine().toUpperCase();
@@ -240,6 +286,10 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Filters dishwashers based on the sound rating.
+     * Prompts the user for input and displays matching dishwashers.
+     */
     private static void filterDishwashers() {
         System.out.print(
                 "\nEnter the sound rating of the dishwasher: Qt (Quietest), Qr (Quieter), Qu (Quiet) or M (Moderate): ");
@@ -258,6 +308,11 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Produces a random list of appliances based on user input.
+     * Prompts the user for the number of appliances to display.
+     * If the input is invalid, it informs the user.
+     */
     private static void produceRandomApplianceList() {
         System.out.print("\nEnter number of appliances: ");
         try {
@@ -277,6 +332,10 @@ class ModernAppliances {
         }
     }
 
+    /**
+     * Saves the current list of appliances to the specified file.
+     * Each appliance is saved in a specific format for later retrieval.
+     */
     private static void saveAppliances() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))) {
             appliances.forEach(appliance -> writer.println(appliance.toFileString()));

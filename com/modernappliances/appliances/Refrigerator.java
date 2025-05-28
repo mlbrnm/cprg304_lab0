@@ -45,20 +45,21 @@ public class Refrigerator extends Appliance {
     public String toString() {
         return super.toString() +
         "Number of Doors: " + getNumberOfDoorsDisplay() + "\n" +
-        "Height: " + height + " cm\n" +
-        "Width: " + width + " cm\n";
+        "Height: " + height + "\n" +
+        "Width: " + width + "\n";
     }
 
     // override toFileString method for file output
     @Override
     public String toFileString() {
+        String formattedPrice = (price == (int) price) ? String.valueOf((int) price) : String.valueOf(price);
         return String.join(";",
         itemNumber,
         brand,
         String.valueOf(quantity),
         String.valueOf(wattage),
         color,
-        String.valueOf(price),
+        formattedPrice,
         String.valueOf(numberOfDoors),
         String.valueOf(height),
         String.valueOf(width)

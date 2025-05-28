@@ -49,13 +49,14 @@ public class Dishwasher extends Appliance {
     // override toFileString method for file output
     @Override
     public String toFileString() {
+        String formattedPrice = (price == (int) price) ? String.valueOf((int) price) : String.valueOf(price);
         return String.join(";",
             itemNumber,
             brand,
             String.valueOf(quantity),
             String.valueOf(wattage),
             color,
-            String.valueOf(price),
+            formattedPrice,
             feature,
             soundRating
         );

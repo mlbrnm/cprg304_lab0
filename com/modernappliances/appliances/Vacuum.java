@@ -29,7 +29,7 @@ public class Vacuum extends Appliance {
 
     // Display friendly battery voltage
     public String getVoltageDisplay() {
-        return batteryVoltage + " V (" + (batteryVoltage == 18 ? "Low" : "High") + ")";
+        return batteryVoltage == 18 ? "Low" : "High";
     }
 
     // override toString method for display
@@ -43,13 +43,14 @@ public class Vacuum extends Appliance {
     // override toFileString method for file output
     @Override
     public String toFileString() {
+        String formattedPrice = (price == (int) price) ? String.valueOf((int) price) : String.valueOf(price);
         return String.join(";",
             itemNumber,
             brand,
             String.valueOf(quantity),
             String.valueOf(wattage),
             color,
-            String.valueOf(price),
+            formattedPrice,
             grade,
             String.valueOf(batteryVoltage)
         );
